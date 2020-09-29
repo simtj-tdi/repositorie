@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Adapters\CustomerAdapter;
 use App\Repositories\CustomerRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -17,9 +18,15 @@ class CustomerController extends Controller
 
     public function index()
     {
-        $customers = $this->customerRepository->all();
+//        $customers = $this->customerRepository->all();
+        $customers = $this->customerRepository->paginate();
 
-        return $customers;
+        $c = new CustomerAdapter($customers);
+
+        return $c->format();
+
+//        return $customers;
+//        return view('welcome');
     }
 
     public function show($customerId)
