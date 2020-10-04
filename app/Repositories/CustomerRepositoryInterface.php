@@ -13,4 +13,8 @@ interface CustomerRepositoryInterface
 //	public function update($customerId);
 //
 //	public function destory($customerId);
+
+    public function format2($customer);
+
+    public function attributes();
 }

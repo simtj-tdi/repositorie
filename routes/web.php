@@ -15,6 +15,7 @@
 //    return view('welcome');
 //});
 
+Route::get('/test', 'CustomerController@test');
 Route::get('/', 'CustomerController@index');
 Route::get('/customer/{customerId}', 'CustomerController@show');
 Route::get('/customer/{customerId}/update', 'CustomerController@update');

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Adapters\CustomerAdapter;
+use App\Adapters\CustomerAdapterInterface;
 use App\Repositories\CustomerRepository;
 use App\Repositories\CustomerRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
@@ -27,5 +29,6 @@ class RepositoriesServiceProvider extends ServiceProvider
     {
         //
         $this->app->bind(CustomerRepositoryInterface::class, CustomerRepository::class);
+        $this->app->bind(CustomerAdapterInterface::class, CustomerAdapter::class);
     }
 }

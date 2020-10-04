@@ -79,4 +79,22 @@ class CustomerRepository extends RepositoryAbstract implements CustomerRepositor
 ////            });
 //
 //    }
+    public function format2($customer)
+    {
+        return $customer->map(function ($item) {
+            return [
+                'customer_id' => $item->id,
+                'name' => $item->name,
+                'create_by' => $item->user->email,
+                'last_updated' => $item->updated_at->diffForHumans()
+            ];
+        });
+    }
+
+    public function attributes()
+    {
+
+        return \Schema::getColumnListing($this->entity->getTable());
+
+    }
 }
